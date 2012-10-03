@@ -1,5 +1,6 @@
 package org.catamarancode.entity.support;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -11,6 +12,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.StatelessSession;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
@@ -22,6 +24,8 @@ public class PersistableUtils {
 	
 	private static Logger logger = LoggerFactory
 			.getLogger(PersistableUtils.class);
+	
+	private static StatelessSession statelessSession;
 
 	
 	/**
@@ -172,19 +176,19 @@ public class PersistableUtils {
 	
 	public static List<? extends Persistable> filter(SessionFactory sessionFactory, Class clazz, 
 			Set<Criterion> criteria) {
-		return filter(sessionFactory, clazz, criteria, Collections.EMPTY_SET);
+		return filter(sessionFactory, clazz, criteria, Collections.EMPTY_LIST);
 	}
 	
 	public static List<? extends Persistable> filter(SessionFactory sessionFactory, Class clazz, 
 			Set<Criterion> criteria, Order order) {
-		Set<Order> orders = new HashSet<Order>();
+		List<Order> orders = new ArrayList<Order>();
 		orders.add(order);
 		return filter(sessionFactory, clazz, criteria, orders);
 	}
 	
 	public static List<? extends Persistable> filter(SessionFactory sessionFactory, Class clazz, 
 			Criterion criterion, Order order) {
-		Set<Order> orders = new HashSet<Order>();
+		List<Order> orders = new ArrayList<Order>();
 		orders.add(order);
 		Set<Criterion> criteria = new HashSet<Criterion>();
 		criteria.add(criterion);
@@ -192,26 +196,26 @@ public class PersistableUtils {
 	}
 	
 	public static List<? extends Persistable> filter(SessionFactory sessionFactory, Class clazz, 
-			Criterion criterion, Set<Order> orders) {
+			Criterion criterion, List<Order> orders) {
 		Set<Criterion> criteria = new HashSet<Criterion>();
 		criteria.add(criterion);
 		return filter(sessionFactory, clazz, criteria, orders);
 	}
 	
 	public static List<? extends Persistable> order(SessionFactory sessionFactory, Class clazz, 
-			Set<Order> orders) {		
+			List<Order> orders) {		
 		return filter(sessionFactory, clazz, Collections.EMPTY_SET, orders);
 	}
 
 	public static List<? extends Persistable> order(SessionFactory sessionFactory, Class clazz, 
 			Order order) {		
-		Set<Order> orders = new HashSet<Order>();
+		List<Order> orders = new ArrayList<Order>();
 		orders.add(order);
 		return order(sessionFactory, clazz, orders);
 	}
 	
 	public static List<? extends Persistable> filter(SessionFactory sessionFactory, Class clazz, 
-			Set<Criterion> criteria, Set<Order> orders) {
+			Set<Criterion> criteria, List<Order> orders) {
 		Session session = getHibernateSession(sessionFactory);
 		Criteria crit = session.createCriteria(clazz);
 		for (Criterion criterion : criteria) {

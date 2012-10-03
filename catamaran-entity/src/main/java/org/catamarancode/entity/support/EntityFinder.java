@@ -62,15 +62,15 @@ public class EntityFinder {
 		return Collections.checkedList(PersistableUtils.order(this.sessionFactory, this.clazz, order), this.clazz);
 	}
 
-	public <T> List<T> order(Set<Order> orders) {
+	public <T> List<T> order(List<Order> orders) {
 		return Collections.checkedList(PersistableUtils.order(this.sessionFactory, this.clazz, orders), this.clazz);
 	}
 	
-	public <T> List<T> filter(Criterion criterion, Set<Order> orders) {
+	public <T> List<T> filter(Criterion criterion, List<Order> orders) {
 		return Collections.checkedList(PersistableUtils.filter(this.sessionFactory, this.clazz, criterion, orders), this.clazz);
 	}
 
-	public <T> List<T> filter(Set<Criterion> criteria, Set<Order> orders) {
+	public <T> List<T> filter(Set<Criterion> criteria, List<Order> orders) {
 		return Collections.checkedList(PersistableUtils.filter(this.sessionFactory, this.clazz, criteria, orders), this.clazz);
 	}
 
