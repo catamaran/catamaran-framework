@@ -180,6 +180,13 @@ public class PersistableUtils {
 	}
 	
 	public static List<? extends Persistable> filter(SessionFactory sessionFactory, Class clazz, 
+			Criterion criterion) {
+		Set<Criterion> criteria = new HashSet<Criterion>();
+		criteria.add(criterion);
+		return filter(sessionFactory, clazz, criteria, Collections.EMPTY_LIST);
+	}
+	
+	public static List<? extends Persistable> filter(SessionFactory sessionFactory, Class clazz, 
 			Set<Criterion> criteria, Order order) {
 		List<Order> orders = new ArrayList<Order>();
 		orders.add(order);
