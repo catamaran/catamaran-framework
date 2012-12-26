@@ -32,7 +32,7 @@ REMOTE_WEBAPP_NAME=ROOT
 # On Ubuntu, this is commonly /var/lib/tomcat7/webapps
 # IMPORTANT: Make both the user you're logging in with (i.e. 'sladmin') 
 #            and the tomcat server user (i.e. 'tomcat7') can write to this directory
-REMOTE_TOMCAT_WEBAPPS_DIR=/var/lib/tomcat7/faqapps
+REMOTE_TOMCAT_WEBAPPS_DIR=
 
 
 
@@ -242,8 +242,8 @@ echo "  build         (compiles java and builds webapp with local web symlinks)"
 echo "  clean         (removes local web symlinks and does maven clean which removes /target)"
 echo "  rebuild       (stops tomcat, builds, starts tomcat)"
 echo "  build-war     (compiles java, builds webapp with no symlinks)"
-echo "  deploy        (build-war, scp war to server, restart server)"
-echo "  status        (shows any running java processes matching this project name)"
+echo "  deploy        (build-war, scp war to server)"
+echo "  status        (shows any running java processes matching current project name)"
 echo "  status-java   (shows all running java processes)"
 echo " "
 
