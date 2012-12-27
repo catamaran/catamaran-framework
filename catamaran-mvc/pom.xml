@@ -17,104 +17,88 @@
     </repository>
   </distributionManagement>
   
+  <!-- 
+  NOTE: Webapps that use catamaran-mvc should not define their own spring and freemarker dependencies (as they may likely conflict with the following definitions).
+  --> 
   <dependencies>
+  
     <dependency>
       <groupId>org.catamarancode</groupId>
       <artifactId>catamaran-core</artifactId>
-      <version>1.0</version>
-	  <scope>provided</scope>
+      <version>1.1</version>
     </dependency>
+    
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    
 	<dependency>
 		<groupId>org.slf4j</groupId>
       	<artifactId>slf4j-api</artifactId>
       	<version>1.5.8</version>
-		<scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-log4j12</artifactId>
       <version>1.5.8</version>
-	  <scope>provided</scope>
     </dependency>	
+    
 	<dependency>
 		<groupId>commons-codec</groupId>
 		<artifactId>commons-codec</artifactId>
 		<version>1.3</version>
-		<scope>provided</scope>
 	</dependency>
 	<dependency>
 		<groupId>commons-lang</groupId>
 		<artifactId>commons-lang</artifactId>
 		<version>2.1</version>
-		<scope>provided</scope>
 	</dependency>
 	<dependency>
 		<groupId>commons-beanutils</groupId>
 		<artifactId>commons-beanutils</artifactId>
 		<version>1.6</version>
-		<scope>provided</scope>
 	</dependency>
 	<dependency>
 		<groupId>commons-collections</groupId>
 		<artifactId>commons-collections</artifactId>
 		<version>3.1</version>
-		<scope>provided</scope>
 	</dependency>	
 	<dependency>
 		<groupId>commons-logging</groupId>
 		<artifactId>commons-logging</artifactId>
 		<version>1.1</version>
-		<scope>provided</scope>
 	</dependency>
+	
 	<dependency>
 		<groupId>dom4j</groupId>
 		<artifactId>dom4j</artifactId>
 		<version>1.6.1</version>
-		<scope>provided</scope>
 	</dependency>
 	
-		<!-- Begin: Spring Framework and required dependencies -->
+    <!-- Begin: Spring Framework and required dependencies -->
 	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-webmvc</artifactId>
-		<version>3.0.1.RELEASE</version>
-		<scope>provided</scope>
+		<version>3.1.2.RELEASE</version>
 	</dependency>
 	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-context-support</artifactId>
-		<version>3.0.1.RELEASE</version>
-		<scope>provided</scope>
+		<version>3.1.2.RELEASE</version>
 	</dependency>
-	
-	<!-- Freemarker stuff -->
-	<dependency>
-		<groupId>org.freemarker</groupId>
-		<artifactId>freemarker</artifactId>
-		<version>2.3.16</version>
-		<scope>provided</scope>
-	</dependency>
-	
-	<!--
-	<dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-core</artifactId>
-		<version>3.0.1.RELEASE</version>
-	</dependency>
-	<dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-orm</artifactId>
-		<version>3.0.1.RELEASE</version>
-	</dependency>
-	-->
 	<!-- End: Spring Framework and required dependencies -->
-		
+
+    <!-- Freemarker stuff -->
+    <dependency>
+        <groupId>org.freemarker</groupId>
+        <artifactId>freemarker</artifactId>
+        <version>2.3.16</version>
+        <scope>provided</scope>
+    </dependency>
+    		
   </dependencies>
 
   <build>
